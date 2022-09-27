@@ -14,12 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-
 from django.urls import path
-
 from django.urls import path, re_path
-
 from firstapp import views
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
@@ -30,8 +28,10 @@ urlpatterns = [
     path('', views.index, name = 'home'),
 #    path('admin/', admin.site.urls),
     #path('about', views.about, name = 'about'),
-    re_path(r'^about', views.about, name = 'about'),
-    re_path(r'^contact', views.contact, name = 'contact'),
+    # re_path(r'^about', views.about, name = 'about'),
+    # re_path(r'^contact', views.contact, name = 'contact'),
+    path ('about', TemplateView.as_view (template_name = "firstapp/about.html")),
+    path ('contact', TemplateView.as_view (template_name = "firstapp/contact.html", extra_context = {"work" : "Отдел закупок"})),
     #re_path(r'^users/(?P<id>\d+)/(?P<user_name>\D+)', views.users),
     path('users/<int:id>/<str:user_name>/', views.users),
     path('users/', views.users), # по умолчанию
