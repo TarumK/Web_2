@@ -10,12 +10,14 @@ from django.template.response import TemplateResponse
 def index(request):
 
     # header = "Персональные данные"  # обычная переменная
-    # langs = ["Английский", "Матерный", "Испанский"]  # массив
+    # langs = ["Английский", "Немецкий", "Испанский"]  # массив
     # user = {"name": "Мурат,", "age": 50}  # словарь
     # addr = ("Широкая", 23, 45)  # кортеж
     # data = {"header": header, "langs": langs, "user": user, "address": addr}
     # return render(request, "index.html", context=data)
-    return render(request,"firstapp/index.html")
+    # cat = ["Ноутбуки", "Принтеры", "Сканеры", "диски", "Шнуры"]
+    cat = []
+    return render(request,"firstapp/index.html", context = {"cat": cat})
 # def home(request):
 #     return render(request, "home.html")
 
