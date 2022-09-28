@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import UserForm
 
 #from django.http import HttpResponse
 from django.http import *
@@ -8,7 +9,14 @@ from django.template.response import TemplateResponse
 # Create your views here.
 
 def index(request):
-
+    if request.method == "POST":
+        name = request.POST.get ("name") # получить значение поля Имя
+        age = request.POST.get("age")  # получить значение поля Возраст
+        output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1} </hЗ>".format(name, age)
+        return HttpResponse(output)
+    else:
+        userform = UserForm()
+        return render(request, "firstapp/index.html", {"form": userform})
     # header = "Персональные данные"  # обычная переменная
     # langs = ["Английский", "Немецкий", "Испанский"]  # массив
     # user = {"name": "Мурат,", "age": 50}  # словарь
@@ -16,8 +24,10 @@ def index(request):
     # data = {"header": header, "langs": langs, "user": user, "address": addr}
     # return render(request, "index.html", context=data)
     # cat = ["Ноутбуки", "Принтеры", "Сканеры", "диски", "Шнуры"]
-    cat = []
-    return render(request,"firstapp/index.html", context = {"cat": cat})
+    # cat = []
+    # userform = UserForm()
+    # return render(request,"firstapp/index.html", {"form": userform})
+
 # def home(request):
 #     return render(request, "home.html")
 
