@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang = en">
 <head>
+<!--    <style>h1{color: green;}</style>-->
     <meta charset = "UTF-8">
     <title>Форма</title>
+    <link href="{% static 'css/styles2.css' %}" rel = "stylesheet">
 </head>
 <body>
     <form method = "POST" action="create/">
@@ -19,7 +22,8 @@
     </form>
 {% if people.count > 0 %}
     <h2>Список пользователей</h2>
-<table>
+    <hr>
+<table class="table">
     <tr><th>Id</th><th>Имя</th><th>Возраст</th></tr>
     {% for person in people %}
     <tr><td>{{ person.id }}</td>
