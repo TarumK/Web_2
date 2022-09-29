@@ -33,6 +33,14 @@ def index(request):
     # userform = UserForm()
     # return render(request,"firstapp/index.html", {"form": userform})
 
+def search(request):
+    if request.method == "POST":
+        poisk_str = request.POST.get("string-of-search")
+        output_text = "Результат по поиску строки {0}".format(poisk_str)
+        return HttpResponse(output_text)
+    else:
+        return render(request, "search.html")
+
 def create(request):
     if request.method == "POST":
         klient = Person()

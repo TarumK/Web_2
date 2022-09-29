@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поисковый сервис</title>
+        <link href="{% static 'css/styles2.css' %}" rel = "stylesheet">
+</head>
+<body>
+    <form method="POST">
+         {% csrf_token %}
+        <label>Введите строку для поиска</label><br>
+        <input type="text" name="string-of-search">
+        <input type="submit" value="Найти">
+    </form>
+
+
+</body>
+</html>
