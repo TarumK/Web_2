@@ -24,8 +24,10 @@ urlpatterns = [
 
     # path('', admin.site.urls, name = 'home'),
     path('admin/', admin.site.urls),
-
-    path('', views.index, name = 'home'),
+    path('', views.index),
+    path('create/', views.create),
+    path('delete/<int:id>/', views.delete),
+    path('edit/<int:id>/', views.edit),
 #    path('admin/', admin.site.urls),
     #path('about', views.about, name = 'about'),
     # re_path(r'^about', views.about, name = 'about'),

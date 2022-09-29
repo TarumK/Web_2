@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
+<html lang = en">
 <head>
-<!--     <style>h1{color: green;}</style>-->
-<meta charset="UТF-8">
-   <title>Пepeдaчa сложных данных</title>
-    <link href="{% static 'css/styles.css' %}" rel = "stylesheet">
+    <meta charset = "UTF-8">
+    <title>Форма</title>
 </head>
 <body>
-<h1>{{header}}</h1>
-<hr>
-<p>Имя: <b>{{user.name}}</b> Возраст: <b>{{user.age}}</b></р>
-<p>Адрес: ул. {{address.0}}, д. {{address.1}}, кв. {{address.2}}</р>
-<p>Владеет языками: {{langs.0}}, {{langs.1}}, {{langs.2}}</р>
-<!--<p align="left"> Фото:-->
-<br><img src = "{% static 'images/2.png' %}" align="center">
+    <form method = "POST" action="create/">
+        {% csrf_token %}
+    <p>
+        <lebel>Введите имя</lebel><br>
+        <input type="text" name="name" />
+    </p>
+    <p>
+        <lebel>Введите возраст</lebel><br>
+        <input type = "number" name = "age">
+    </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% if people.count > 0 %}
+    <h2>Список пользователей</h2>
+<table>
+    <tr><th>Id</th><th>Имя</th><th>Возрастwer</th></tr>
+    {% for person in people %}
+    <tr><td>{{ person.id }}</td>
+    <td>{{ person.name }}</td>
+    <td>{{ person.age }}</td>
+        <td><a href="edit/{{person.id}}">Изменить</a> | <a href="delete/{{person.id}}">Удалить</a></td></tr>
+    {% endfor %}
+</table>
+{% endif %}
 </body>
 </html>

@@ -1,22 +1,27 @@
 from django.shortcuts import render
 from .forms import UserForm
+# from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
-#from django.http import HttpResponse
-from django.http import *
+# from django.http import *
 from django.template.response import TemplateResponse
+from .models import Person
 
 
 # Create your views here.
 
+# функция запроса инфы из базы данных и загрузка индексного файла хтмл с этими данными в браузер пользователя
 def index(request):
-    if request.method == "POST":
-        name = request.POST.get ("name") # получить значение поля Имя
-        age = request.POST.get("age")  # получить значение поля Возраст
-        output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1} </hЗ>".format(name, age)
-        return HttpResponse(output)
-    else:
-        userform = UserForm()
-        return render(request, "firstapp/index.html", {"form": userform})
+    people = Person.object.all()
+    return render(request,"index.html", {"people" : people})
+    # if request.method == "POST":
+    #     name = request.POST.get ("name") # получить значение поля Имя
+    #     age = request.POST.get("age")  # получить значение поля Возраст
+    #     output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1} </hЗ>".format(name, age)
+    #     return HttpResponse(output)
+    # else:
+    #     userform = UserForm()
+    #     return render(request, "firstapp/index.html", {"form": userform})
     # header = "Персональные данные"  # обычная переменная
     # langs = ["Английский", "Немецкий", "Испанский"]  # массив
     # user = {"name": "Мурат,", "age": 50}  # словарь
@@ -27,6 +32,34 @@ def index(request):
     # cat = []
     # userform = UserForm()
     # return render(request,"firstapp/index.html", {"form": userform})
+
+def create(request):
+    if request.method == "POST":
+        klient = Person()
+        klient.name = request.POST.get("name")
+        klient.age = request.POST.get("age")
+        klient.save()
+    return HttpResponseRedirect("/")
+
+def delete(request, id):
+    try:
+        person = Person.object.get(id = id)
+        person.delete()
+        return HttpResponseRedirect ("/")
+    except Person.DoesNotExist:
+        return HttpResponsNotFound ("<h2>Нет такого клиента</h2>")
+
+def edit(request, id):
+    try:
+        person = Person.object.get(id = id)
+        if request.method == "POST":
+            person.name = request.POST.get("name")
+            person.age = request.POST.get("age")
+            person.save()
+        else:
+            return render(request, "/edit.html", {"person": person})
+    except Person.DoesNotExist:
+        return HttpResponseNotFound("<h2>Клиeнт не найден</h2>")
 
 # def home(request):
 #     return render(request, "home.html")

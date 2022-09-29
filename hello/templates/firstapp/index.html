@@ -5,13 +5,31 @@
     <title>Форма</title>
 </head>
 <body>
-    <form method = "POST">
+    <form method = "POST" action="create">
         {% csrf_token %}
-    <table>
-        {{form.as_p}}
-    </table>
-
-        <input type = "submit" value = "Отправить">
+    <p>
+        <lebel>Введите имя</lebel><br>
+        <input type="text" name="name" />
+    </p>
+    <p>
+        <lebel>Введите возраст</lebel><br>
+        <input type = "number" name = "age" />
+    </p>
+        <input type="submit" value="Сохранить">
     </form>
+{% if people.count > 0 %}
+    <h2>Список пользователей</h2>
+<table>
+    <tr><th>Id</th><th>Имя</th><th>Возрастwerwer</th></tr>
+    {% for person in people %}
+    <tr><td>{{ person.id }}</td>
+    <td>{{ person.name }}</td>
+    <td>{{ person.age }}</td></tr>
+    <td><a href="asdasd">изменить</a> |
+        <a href="asdasd">удалить</a> </td>
+    {% endfor %}
+{% endif %}
+
+</table>
 </body>
 </html>
