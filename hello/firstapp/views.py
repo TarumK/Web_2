@@ -45,19 +45,19 @@ def delete(request, id):
     try:
         person = Person.object.get(id = id)
         person.delete()
-        return HttpResponseRedirect ("/")
+        return HttpResponseRedirect("/")
     except Person.DoesNotExist:
-        return HttpResponsNotFound ("<h2>Нет такого клиента</h2>")
+        return HttpResponsNotFound("<h2>Нет такого клиента</h2>")
 
 def edit(request, id):
     try:
-        person = Person.object.get(id = id)
+        person = Person.object.get(id=id)
         if request.method == "POST":
             person.name = request.POST.get("name")
             person.age = request.POST.get("age")
             person.save()
         else:
-            return render(request, "/edit.html", {"person": person})
+            return render(request, "edit.html", {"person": person})
     except Person.DoesNotExist:
         return HttpResponseNotFound("<h2>Клиeнт не найден</h2>")
 

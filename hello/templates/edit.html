@@ -7,10 +7,10 @@
 <body class="container">
 <form method="POST">
 {% csrf_token %}
-<р>
+<p>
 <label>Введите имя</label><br>
 <input type="text" name="name" value="{{person.name}}" />
-</р>
+</p>
 <p>
 <label>Введите возраст</label><br>
 <input type="number" name="age" value="{{person.age}}" />

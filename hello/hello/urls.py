@@ -28,18 +28,18 @@ urlpatterns = [
     path('create/', views.create),
     path('delete/<int:id>/', views.delete),
     path('edit/<int:id>/', views.edit),
-#    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     #path('about', views.about, name = 'about'),
     # re_path(r'^about', views.about, name = 'about'),
     # re_path(r'^contact', views.contact, name = 'contact'),
-    path ('about', TemplateView.as_view (template_name = "firstapp/about.html")),
-    path ('contact', TemplateView.as_view (template_name = "firstapp/contact.html", extra_context = {"work" : "Отдел закупок"})),
+    path('about', TemplateView.as_view(template_name="firstapp/about.html")),
+    path('contact', TemplateView.as_view(template_name="firstapp/contact.html", extra_context={"work": "Отдел закупок"})),
     #re_path(r'^users/(?P<id>\d+)/(?P<user_name>\D+)', views.users),
     path('users/<int:id>/<str:user_name>/', views.users),
     path('users/', views.users), # по умолчанию
-    path ('products/<int:id>/<str:user_name>', views.products),
-    path ('products/', views.products), # по умолчанию
-    #path ('home/', views.home),
+    path('products/<int:id>/<str:user_name>', views.products),
+    path('products/', views.products), # по умолчанию
+    #path('home/', views.home),
 
     #re_path(r'^users/$', views.users), # маршрут по умолчанию для явно незаданного юзера
     #re_path(r'^products/$', views.products), # маршрут по умолчанию для явно незаданной продукции
