@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import UserForm
 # from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 
 # from django.http import *
 from django.template.response import TemplateResponse
@@ -47,7 +47,7 @@ def delete(request, id):
         person.delete()
         return HttpResponseRedirect("/")
     except Person.DoesNotExist:
-        return HttpResponsNotFound("<h2>Нет такого клиента</h2>")
+        return HttpResponseNotFound("<h2>Нет такого клиента</h2>")
 
 def edit(request, id):
     try:
@@ -56,6 +56,7 @@ def edit(request, id):
             person.name = request.POST.get("name")
             person.age = request.POST.get("age")
             person.save()
+            return HttpResponseRedirect("/")
         else:
             return render(request, "edit.html", {"person": person})
     except Person.DoesNotExist:
