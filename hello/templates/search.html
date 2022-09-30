@@ -3,15 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>Поисковый сервис</title>
-        <link href="{% static 'css/styles2.css' %}" rel = "stylesheet">
+<!--        <link href="{% static 'css/styles2.css' %}" rel = "stylesheet">-->
 </head>
 <body>
     <form method="POST">
          {% csrf_token %}
-        <label>Введите строку для поиска</label><br>
-        <input type="text" name="string-of-search">
+        <center><h1>Adawada</h1>
+        <input type="text" name="string-of-search" placeholder="Введите строку для поиска">
+
         <input type="submit" value="Найти">
+        </center>
     </form>
 
 
