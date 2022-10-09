@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import UserForm
 # from django.http import HttpResponse
 from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
-
+from googlesearch import search
 # from django.http import *
 from django.template.response import TemplateResponse
 from .models import Person
@@ -36,7 +36,7 @@ def index(request):
 def search(request):
     if request.method == "POST":
         poisk_str = request.POST.get("string-of-search")
-        output_text = "Результат по поиску строки {0}".format(poisk_str)
+        output_text = "Къэдгъуэтам и бжыгъэр {0}".format(poisk_str)
         output_text = list(poisk_str)
         output_text2= output_text[0]
         return HttpResponse(output_text2)
