@@ -8,6 +8,8 @@
 <!--        <link href="{% static 'css/styles2.css' %}" rel = "stylesheet">-->
 </head>
 <body>
+<h3>Моя крутая поисковая машина</h3>
+<hr>
     <form method="POST">
          {% csrf_token %}
         <center><h1>Adawada</h1>
@@ -16,6 +18,6 @@
         <input type="submit" value="Найти">
         </center>
     </form>
-
+<p> {{ output_text2 }} <b>{{ output_text }}</b></p>
 </body>
 </html>

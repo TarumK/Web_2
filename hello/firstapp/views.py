@@ -37,9 +37,13 @@ def search(request):
     if request.method == "POST":
         poisk_str = request.POST.get("string-of-search")
         output_text = "Результат по поиску строки {0}".format(poisk_str)
-        output_text = list(poisk_str)
-        output_text2= output_text[0]
-        return HttpResponse(output_text2)
+        output_text = poisk_str
+            # list(poisk_str)
+        # zapros = output_text
+        output_text2= 'тут будет список ссылок, релевантных поисковому запросу'
+            # output_text[0]
+        return render(request, "search.html", {"output_text2": output_text2, "output_text": output_text})
+        # return HttpResponse(output_text2)
     else:
         return render(request, "search.html")
 
@@ -83,9 +87,10 @@ def about(request):
 
 
 def contact(request):
-    return HttpResponse('''<h1>Контакты разработчика</h1> 
-    <hr>
-    Кябишев М.М. http://adawada.ru''')
+    return (request,"contact.html")
+    # return HttpResponse('''<h1>Контакты разработчика</h1>
+    # <hr>
+    # Кябишев М.М. http://adawada.ru''')
 
 def products(request, product_id = 1):
     output = "Продукт № {0}".format(product_id)
