@@ -34,7 +34,7 @@ urlpatterns = [
     # re_path(r'^about', views.about, name = 'about'),
     # re_path(r'^contact', views.contact, name = 'contact'),
     path('about', TemplateView.as_view(template_name="firstapp/about.html")),
-    path('contact', TemplateView.as_view(template_name="firstapp/contact.html", extra_context={"work": "Отдел закупок"})),
+    path('contact', TemplateView.as_view(template_name="contact.html", extra_context={"work": "Отдел закупок"})),
     #re_path(r'^users/(?P<id>\d+)/(?P<user_name>\D+)', views.users),
     path('users/<int:id>/<str:user_name>/', views.users),
     path('users/', views.users), # по умолчанию
