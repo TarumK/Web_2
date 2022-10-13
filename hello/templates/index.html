@@ -30,9 +30,10 @@
     <h2>Список пользователей</h2>
     <hr>
 <table class="table">
-    <tr><th>Id</th><th>Имя</th><th>Возраст</th></tr>
+    <tr><th>Имя</th><th>Возраст</th></tr>
+<!--    <tr><th>Id</th><th>Имя</th><th>Возраст</th></tr>-->
     {% for person in people %}
-    <tr><td>{{ person.id }}</td>
+<!--    <tr><td>{{ person.id }}</td>-->
     <td>{{ person.name }}</td>
     <td>{{ person.age }}</td>
         <td><a href="edit/{{person.id}}">Изменить</a> | <a href="delete/{{person.id}}">Удалить</a></td></tr>
