@@ -1,3 +1,4 @@
+# https://www.youtube.com/watch?v=nq3ki32aHWY
 from django.http import HttpResponse, HttpRequest
 # This is a sample Python script.
 
