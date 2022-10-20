@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure--!tf-2-x!b+4$t)4@zt)i&6ap!$bqofh8pk#a7w4_=r)^b7gv#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'hello.urls'
 #         'DIRS': [],
 #     }
 # ]
-TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates_Front")
 
 TEMPLATES = [
     {

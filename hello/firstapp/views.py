@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 # from django.http import *
 from django.template.response import TemplateResponse
 from .models import Person
-from splitcher3 import splitcher
+from .splitcher3 import splitcher
 
 
 # Create your views here.
