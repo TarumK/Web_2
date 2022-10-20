@@ -6,18 +6,24 @@
 
     <title>Поисковый сервис</title>
 <!--        <link href="{% static 'css/styles2.css' %}" rel = "stylesheet">-->
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-<h3>Моя крутая поисковая машина</h3>
+<h3>Озвучивание текста на черкесском языке</h3>
 <hr>
     <form method="POST">
          {% csrf_token %}
         <center><h1>Adawada</h1>
-        <input type="text" name="string-of-search" placeholder="Введите строку для поиска">
+        <input type="text" name="string-of-search" size="128" placeholder="Наберите или скопируйте текст на черкесском языке и нажмите на кнопку 'Читать'">
 
-        <input type="submit" value="Найти">
+        <input type="submit" value="Читать">
         </center>
     </form>
-<p> {{ output_text2 }} <b>{{ output_text }}</b></p>
+<hr>
+<center>
+<p> {{ output_text2 }}
+    <p><b>{{ output_text }}</b></p>
+</center>
 </body>
 </html>
