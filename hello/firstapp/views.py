@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 # from django.http import *
 from django.template.response import TemplateResponse
 from .models import Person
-from splitcher3 import splitcher
 
 
 # Create your views here.
@@ -35,9 +34,6 @@ def index(request):
     # return render(request,"firstapp/index.html", {"form": userform})
 
 def search(request):
-
-
-
     if request.method == "POST":
         poisk_str = request.POST.get("string-of-search")
         output_text = "Результат по поиску строки {0}".format(poisk_str)
@@ -46,7 +42,6 @@ def search(request):
         # zapros = output_text
         output_text2= 'тут будет список ссылок, релевантных поисковому запросу'
             # output_text[0]
-        output_text2 = splitcher(poisk_str)
         return render(request, "search.html", {"output_text2": output_text2, "output_text": output_text})
         # return HttpResponse(output_text2)
     else:
