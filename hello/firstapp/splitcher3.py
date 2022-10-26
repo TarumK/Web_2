@@ -1,4 +1,8 @@
 #test
+from pydub import AudioSegment
+from pydub.playback import play
+# sound = AudioSegment.from_wav('myfile.wav')
+# play(sound)
 def splitcher(spam):
 
     egg = ['А', 'Э', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З',
@@ -10,6 +14,7 @@ def splitcher(spam):
            'ХЪУ', 'КХЪУ', '.', ',', ' ']
 
     l_spam = list(spam.replace('1', 'I').upper())
+    l_spam = list(spam.replace(' ', '_').upper())
     # l_spam = [s.upper() for s in l_spam]
     ll = []
 
@@ -30,8 +35,11 @@ def splitcher(spam):
             pass
     return ll
 
-#
 # stroka = input('Enter: ')
 # print(splitcher(stroka))
+# mm = splitcher(stroka)
+# for i in mm:
+#     sound = AudioSegment.from_wav('sound/'+i+'.wav')
+#     play(sound)
 # str_ll = ''.join(splitcher(stroka))
 # print(''.join(str_ll).upper())
